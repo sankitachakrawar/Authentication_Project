@@ -2,6 +2,9 @@ package com.app.dto;
 
 import java.util.Date;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -13,6 +16,8 @@ public class CandidateDto {
 		
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotBlank(message = "Name is Required*nameRequired")
@@ -66,6 +71,12 @@ public class CandidateDto {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "CandidateDto [id=" + id + ", name=" + name + ", email=" + email + ", dob=" + dob + ", address="
+				+ address + "]";
 	}
 	
 	

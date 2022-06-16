@@ -6,14 +6,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-
-
+import org.springframework.stereotype.Repository;
 
 import com.app.dto.ICandidateListDto;
 import com.app.entities.CandidateEntity;
 
-//@Repository
+
 
 public interface CandidateRepository extends JpaRepository<CandidateEntity, Long> {
 
