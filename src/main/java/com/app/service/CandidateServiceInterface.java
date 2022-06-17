@@ -1,10 +1,7 @@
 package com.app.service;
 
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.data.domain.Page;
-import com.app.dto.ChangePasswordDto;
-import com.app.dto.ForgotPasswordDto;
 import com.app.dto.ICandidateListDto;
 import com.app.entities.CandidateEntity;
 import com.app.exceptionhandling.ResourceNotFoundException;
@@ -21,10 +18,16 @@ public interface CandidateServiceInterface {
 	
 	public CandidateEntity addCandidate(CandidateEntity candidateEntity);
 	
-	void changePassword(Long id,ChangePasswordDto changePasswordDto,HttpServletRequest request)throws ResourceNotFoundException;
+	//void changePassword(Long id,ChangePasswordDto changePasswordDto,HttpServletRequest request)throws ResourceNotFoundException;
 
-	void forgotPassword(String token,ForgotPasswordDto forgotPassworddto,HttpServletRequest request)throws ResourceNotFoundException;
+	//void forgotPassword(String token,ForgotPasswordDto forgotPassworddto,HttpServletRequest request)throws ResourceNotFoundException;
 
+	public void updateResetPasswordToken(String token, String email) throws ResourceNotFoundException;
 
-
+	 public CandidateEntity getByResetPasswordToken(String pass);
+	
+	 public void updatePassword(CandidateEntity candidateEntity, String newPassword);
+	 
+	 
+	 
 }

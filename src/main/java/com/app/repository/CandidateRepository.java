@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.app.dto.ICandidateListDto;
@@ -20,15 +21,14 @@ public interface CandidateRepository extends JpaRepository<CandidateEntity, Long
 	
 	Page<ICandidateListDto> findByOrderByIdDesc(Pageable page,Class<ICandidateListDto> candidateListDto);
 
-
-
-	//Page<ICandidateListDto> findByNameContainingIgnoreCaseOrEmailContainingIgnoreCaseOrDesignationIdNameContainingIgnoreCaseOrderByIdDesc(
-		//	String search, String search2, String search3, Pageable paging, Class<ICandidateListDto> class1);
-
 	Optional<CandidateEntity> findByEmailContainingIgnoreCase(String email);
 
 	Optional<CandidateEntity> findByIdAndIsActiveTrue(Long id);
 
+	@Query("SELECT c FROM CandidateEntity c WHERE c.email = ?1")
+    public CandidateEntity findByEmail(String email); 
+     
+    public CandidateEntity findByResetPassword(String pass);
 
 }
 

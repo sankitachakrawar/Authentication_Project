@@ -1,14 +1,20 @@
 package com.app.entities;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.UpdateTimestamp;
@@ -54,6 +60,9 @@ public class CandidateEntity implements Serializable{
 	
 	@Column(name = "is_active")
 	private Boolean isActive = true;
+	
+	@Column(name="reset_password")
+	private String resetPassword;
 
 	public CandidateEntity(long id, String name, String email, String password, Date dob, String address, Date lastLoginAt,
 			Date updatedAt, Boolean isActive) {
@@ -67,6 +76,7 @@ public class CandidateEntity implements Serializable{
 		this.lastLoginAt = lastLoginAt;
 		this.updatedAt = updatedAt;
 		this.isActive = isActive;
+		this.resetPassword=resetPassword;
 	}
 
 	public CandidateEntity() {
@@ -145,6 +155,13 @@ public class CandidateEntity implements Serializable{
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
+	
+	public void setResetPassword(String resetPassword) {
+		this.resetPassword = resetPassword;
+	}
+	public String getResetPassword() {
+		return resetPassword;
+	}
 
 	@Override
 	public String toString() {
@@ -153,6 +170,5 @@ public class CandidateEntity implements Serializable{
 				+ isActive + "]";
 	}
 	
-	
-	
+	 
 }
